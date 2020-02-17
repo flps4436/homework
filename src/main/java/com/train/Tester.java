@@ -6,15 +6,6 @@ public class Tester {
 
     public static void main(String[] args) {
 
-        Ticket ticket = getUserInput();
-
-        System.out.println( "Total tickets: " + ticket.total +
-                " Round-trip: " + ticket.round +
-                " Total: " + ticket.getTotal() );
-    }
-
-    private static Ticket getUserInput(){
-
         int count, roundCount ;
 
         Scanner scanner = new Scanner(System.in);
@@ -23,12 +14,21 @@ public class Tester {
 
         count = scanner.nextInt();
 
-        System.out.print("How many round-trip tickets:");
+        while ( count != -1 ) {
 
-        roundCount = scanner.nextInt();
+            System.out.print("How many round-trip tickets:");
 
-        return new Ticket( count, roundCount );
+            roundCount = scanner.nextInt();
 
+            Ticket ticket = new Ticket(count, roundCount);
+
+            System.out.println("Total tickets: " + ticket.total +
+                    " Round-trip: " + ticket.round +
+                    " Total: " + ticket.getTotal() + "\n" );
+
+            System.out.print( "Please enter number of tickets:" );
+
+            count = scanner.nextInt();
+        }
     }
-
 }

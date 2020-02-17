@@ -4,27 +4,29 @@ import java.util.*
 
 fun main() {
 
-    var ticket : Ticket = userInput()
-
-    println("Total tickets: ${ticket.total} Round-trip: ${ticket.round} " +
-            "Total: ${ ticket.totalMoney() } " )
-
-}
-
-fun userInput() : Ticket {
-
     val scanner = Scanner(System.`in`)
 
     print( "Please enter number of tickets:" )
 
     var count = scanner.nextInt()
 
-    print("How many round-trip tickets:")
+    while ( count != -1 ) {
 
-    var roundCount = scanner.nextInt()
+        print("How many round-trip tickets:")
 
-    return Ticket( count, roundCount!! )
+        var roundCount = scanner.nextInt()
 
+        var ticket = Ticket(count, roundCount)
+
+        println(
+            "Total tickets: ${ticket.total} Round-trip: ${ticket.round} " +
+                    "Total: ${ticket.totalMoney()} \n"
+        )
+
+        print( "Please enter number of tickets:" )
+
+        count = scanner.nextInt()
+    }
 }
 
 class Ticket( var total : Int, var round : Int ) {
